@@ -1,0 +1,897 @@
+/**
+主样式表
+
+参考引用了 @paul 的 kico style
+
+鸣谢: paul
+
+*/
+
+html, body, dl, dt, dd, ol, ul, h1, h2, h3, h4, h5, h6, pre, code, form, p, fieldset, legend, figure {
+    margin: 0;
+    padding: 0;
+}
+
+/* -- 全局样式 */
+
+html {
+    color: rgba(236, 240, 241, .8);
+    font: 16px/1.5 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+}
+
+html.white {
+    color: #ecf0f1;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(../img/57.png) center/cover fixed no-repeat;
+    z-index: -2;
+}
+
+@media screen and (max-width: 500px) {
+    html.font-auto {
+        font-size: 14px
+    }
+}
+
+@media screen and (min-width: 1930px) {
+    html.font-auto {
+        font-size: 18px
+    }
+}
+
+*, *:before, *:after {
+    box-sizing: border-box
+}
+
+/* - 选择内容 */
+
+::-moz-selection {
+    color: #3498db;
+    background-color: rgba(0, 0, 0, .66);
+}
+
+::selection {
+    color: #3498db;
+    background-color: rgba(0, 0, 0, .66);
+}
+
+/* - 滚动条 */
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(189, 195, 199, .6);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track:hover {
+    border-radius: 5px;
+    background: rgba(189, 195, 199, .1);
+}
+
+body::-webkit-scrollbar-thumb {
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+
+body::-webkit-scrollbar-track:hover {
+    border-radius: 0;
+    box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1);
+}
+
+/* -- 容器 */
+
+.wrap {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding: 0 1.25em;
+    box-sizing: content-box;
+}
+
+.clearfix:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+/* -- 头部 */
+
+/* -- 导航 */
+
+header nav {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    transition: bottom .3s;
+    min-height: 60px;
+    z-index: 10;
+}
+
+nav::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+@supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    nav {
+        color: rgba(236, 240, 241, .8);
+    }
+    nav::before {
+        background: rgba(0, 0, 0, .5);
+        -webkit-backdrop-filter: brightness(150%) blur(30px);
+        backdrop-filter: brightness(150%) blur(30px);
+    }
+    html.white nav {
+        color: #34495e;
+    }
+    html.white nav::before {
+        background: rgba(0, 0, 0, .05);
+        -webkit-backdrop-filter: brightness(150%) blur(30px);
+        backdrop-filter: brightness(150%) blur(30px);
+    }
+}
+
+/* 若浏览器器不支持，则使用 MaterialDesign 的风格 */
+
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    nav {
+        color: #333;
+    }
+    nav::before {
+        background: #fff;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, .18), 0px 6px 10px rgba(0, 0, 0, .22);
+    }
+}
+
+nav ul {
+    display: inline;
+}
+
+nav li {
+    display: inline-block;
+}
+
+header a {
+    color: currentColor;
+    padding: 1rem 1.5rem;
+    display: inline-block;
+}
+
+/* 主容器 */
+
+main {
+    position: relative;
+    margin: 8em auto 5em;
+    max-width: 55em;
+    padding: 2em;
+    animation: blur 1s ease-in-out;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+    border-radius: 24px;
+}
+
+html.white main::before {
+    background: rgba(0, 0, 0, .05);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+}
+
+/* -- 文章 */
+
+.is-article {
+    position: relative;
+    padding: 2em;
+    z-index: 2;
+    /* color: rgba(236, 240, 241, .8); */
+    font-weight: 400;
+}
+
+.post-title h1 {
+    font-weight: inherit;
+}
+
+.post-body {
+    margin: 3em 0 3em;
+}
+
+.post-body h1 {
+    font-size: 1.2em;
+    padding-left: .75em;
+    border-left: 2px solid rgb(30, 131, 211);
+    font-weight: inherit;
+}
+
+.post-body a {
+    border-bottom: 1px solid #3498db;
+}
+
+.post-body a:hover {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%233498db' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
+    background-size: 20px auto;
+    animation: waveMove 1s infinite linear;
+    border-bottom: 1px solid transparent;
+}
+
+/* -- 元素 */
+
+a {
+    text-decoration: none;
+    color: currentColor;
+    display: inline-block;
+    margin: .2em;
+    will-change: transition;
+    transition: color .5s ease-in-out;
+}
+
+a:hover {
+    color: rgb(30, 131, 211);
+}
+
+ul {
+    list-style: none;
+}
+
+img, svg, audio, video {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+em {
+    color: #fff;
+    font-style: normal;
+    background: #3498db;
+    border-radius: 24px;
+    display: inline-block;
+    padding: 1px 1em;
+}
+
+blockquote {
+    margin: 0 0 1em;
+    line-height: 1.8;
+    font-style: oblique;
+    padding: 1em 1em 1em 2em;
+}
+
+blockquote::before {
+    content: '> ';
+    position: absolute;
+    color: #3498db;
+    font-weight: 900;
+    left: 2.5em;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+}
+
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child {
+    margin-bottom: 0;
+}
+
+p {
+    line-height: 1.8;
+    margin-bottom: 1em;
+}
+
+code {
+    color: #3498db;
+    font-size: 90%;
+    font-family: 'Courier New', Courier, monospace;
+    word-wrap: normal;
+    border-radius: 4px;
+    padding: .25em .5em;
+    word-break: break-all;
+    background-color: rgba(0, 0, 0, .07);
+    margin: 0 1px;
+}
+
+/* - 文章 */
+
+article {
+    word-break: break-all
+}
+
+article>* {
+    margin-bottom: 1em
+}
+
+article>*:last-child {
+    margin-bottom: 0
+}
+
+article h1, article h2, article h3 {
+    font-size: 1.2em
+}
+
+article h4, article h5, article h6 {
+    font-size: 1.1em
+}
+
+/* -- 遮罩 */
+
+body.loading .overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    position: fixed;
+    animation: fade-in .5s both;
+    -webkit-animation: fade-in .5s both;
+    background: rgba(0, 0, 0, .5);
+    display: block;
+}
+
+.overlay {
+    display: none;
+}
+
+.overlay p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #bdc3c7;
+    font-size: 33px;
+}
+
+.overlay .ball {
+    position: absolute;
+    top: calc(50% - 6em);
+    left: calc(50% - 2em);
+    width: 38px;
+    height: 38px;
+    border-radius: 88%;
+    transform: rotate(225deg);
+    animation: loading 5s infinite;
+}
+
+.overlay .ball:nth-child(2) {
+    animation-delay: .3s;
+}
+
+.overlay .ball:nth-child(3) {
+    animation-delay: .6s;
+}
+
+.overlay .ball:nth-child(4) {
+    animation-delay: .9s;
+}
+
+.overlay .ball:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+.overlay .ball::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 88%;
+    background-color: #fff;
+}
+
+body.loading .overlay.blur {
+    -webkit-backdrop-filter: brightness(150%) blur(30px);
+    backdrop-filter: brightness(150%) blur(30px);
+}
+
+body.completed .overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    position: fixed;
+    animation: fade-off .5s both;
+    -webkit-animation: fade-off .5s both;
+    background: rgba(0, 0, 0, .5);
+}
+
+body.completed .overlay.blur {
+    -webkit-backdrop-filter: brightness(150%) blur(30px);
+    backdrop-filter: brightness(150%) blur(30px);
+}
+
+/* -- 动画 */
+
+/* - 淡入淡出 */
+
+@keyframes fade-in {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fade-in {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade-off {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes fade-off {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes fade-in-top {
+    from {
+        opacity: 0;
+        transform: translateY(20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@-webkit-keyframes fade-in-top {
+    from {
+        opacity: 0;
+        transform: translateY(20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes fade-in-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@-webkit-keyframes fade-in-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes fade-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@-webkit-keyframes fade-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(-20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@-webkit-keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(-20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+/* - 淡入缩放 */
+
+@keyframes fade-small-large {
+    from {
+        opacity: 0;
+        transform: scale(.5, .5)
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1)
+    }
+}
+
+@-webkit-keyframes fade-small-large {
+    from {
+        opacity: 0;
+        transform: scale(.5, .5)
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1)
+    }
+}
+
+@keyframes fade-large-small {
+    from {
+        opacity: 1;
+        transform: scale(1, 1)
+    }
+    to {
+        opacity: 0;
+        transform: scale(.5, .5)
+    }
+}
+
+@-webkit-keyframes fade-large-small {
+    from {
+        opacity: 1;
+        transform: scale(1, 1)
+    }
+    to {
+        opacity: 0;
+        transform: scale(.5, .5)
+    }
+}
+
+@keyframes fade-larger-small {
+    from {
+        opacity: 0;
+        transform: scale(1.5, 1.5)
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1)
+    }
+}
+
+@-webkit-keyframes fade-larger-small {
+    from {
+        opacity: 0;
+        transform: scale(1.5, 1.5)
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1)
+    }
+}
+
+@keyframes fade-small-larger {
+    from {
+        opacity: 1;
+        transform: scale(1, 1)
+    }
+    to {
+        opacity: 0;
+        transform: scale(1.5, 1.5)
+    }
+}
+
+@-webkit-keyframes fade-small-larger {
+    from {
+        opacity: 1;
+        transform: scale(1, 1)
+    }
+    to {
+        opacity: 0;
+        transform: scale(1.5, 1.5)
+    }
+}
+
+@keyframes scale-small-large {
+    from {
+        transform: scale(0, 0)
+    }
+    to {
+        transform: scale(1, 1)
+    }
+}
+
+@-webkit-keyframes scale-small-large {
+    from {
+        transform: scale(0, 0)
+    }
+    to {
+        transform: scale(1, 1)
+    }
+}
+
+@keyframes scale-large-small {
+    from {
+        transform: scale(1, 1)
+    }
+    to {
+        transform: scale(0, 0)
+    }
+}
+
+@-webkit-keyframes scale-large-small {
+    from {
+        transform: scale(1, 1)
+    }
+    to {
+        transform: scale(0, 0)
+    }
+}
+
+/* - 平移 */
+
+@keyframes up-and-down {
+    from {
+        transform: translateY(-20px)
+    }
+    to {
+        transform: translateY(20px)
+    }
+}
+
+@-webkit-keyframes up-and-down {
+    from {
+        transform: translateY(-20px)
+    }
+    to {
+        transform: translateY(20px)
+    }
+}
+
+@keyframes left-and-right {
+    from {
+        transform: translateX(-20px)
+    }
+    to {
+        transform: translateX(20px)
+    }
+}
+
+@-webkit-keyframes left-and-right {
+    from {
+        transform: translateX(-20px)
+    }
+    to {
+        transform: translateX(20px)
+    }
+}
+
+/* - 旋转 */
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@-webkit-keyframes rotate {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+/* - 弹跳 */
+
+@keyframes jump {
+    0% {
+        transform: translateY(0) scale(1.15, .8)
+    }
+    20% {
+        transform: translateY(-35px) scaleY(1.1)
+    }
+    50% {
+        transform: translateY(-50px) scale(1)
+    }
+    80% {
+        transform: translateY(-35px) scale(1)
+    }
+    to {
+        transform: translateY(0) scale(1.15, .8)
+    }
+}
+
+/* - 波浪 */
+
+@keyframes waveMove {
+    from {
+        background-position: 0 100%;
+    }
+    to {
+        background-position: -20px 100%;
+    }
+}
+
+/* - 模糊 */
+
+@keyframes blur {
+    from {
+        filter: blur(10px);
+    }
+    to {
+        filter: none;
+    }
+}
+
+/* - 仿win10小球加载 */
+
+@keyframes loading {
+    0% {
+        transform: rotate(225deg);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    7% {
+        transform: rotate(345deg);
+        animation-timing-function: linear;
+    }
+    30% {
+        transform: rotate(455deg);
+        animation-timing-function: ease-in-out;
+    }
+    39% {
+        transform: rotate(690deg);
+        animation-timing-function: linear;
+    }
+    70% {
+        transform: rotate(815deg);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    75% {
+        transform: rotate(945deg);
+        animation-timing-function: ease-out;
+    }
+    76% {
+        transform: rotate(945deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(945deg);
+        opacity: 0;
+    }
+}
+
+/* -- 底部 */
+
+footer {
+    text-align: center;
+    margin-top: -3em;
+}
+
+/* -- 额外布局 用于首页 */
+
+#home {
+    overflow: hidden;
+}
+
+#home .self {
+    overflow: hidden;
+}
+
+#home section.self img {
+    max-width: 150px;
+    border-radius: 88%;
+    float: left;
+    margin-left: 2em;
+}
+
+#home section.self>div {
+    margin-left: 15em;
+}
+
+#home h1 {
+    font-weight: 400;
+}
+
+#home h2 {
+    font-weight: 400;
+}
+
+#home #news {
+    margin: 2em 0 2em 2em;
+    columns: 2;
+}
+
+@media (max-width: 600px) {
+    #home #news {
+        columns: 1;
+    }
+}
+
+container {
+    position: relative;
+    min-height: calc(70vh + 2em);
+    display: block;
+}
+
+#home #news a {
+    position: relative;
+    transition: .5s ease;
+    left: 0;
+}
+
+#home #news a:not(.more):hover {
+    left: .5em;
+}
+
+#home #news a:not(.more)::before {
+    content: '\f105';
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    opacity: 0;
+    left: -1em;
+    transition: opacity .5s ease-in-out;
+}
+
+#home #news a:not(.more):hover::before {
+    opacity: 1;
+}
