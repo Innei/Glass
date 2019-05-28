@@ -272,6 +272,7 @@ em {
     border-radius: 24px;
     display: inline-block;
     padding: 1px 1em;
+    margin-top: 2px;
 }
 
 blockquote {
@@ -349,8 +350,8 @@ body.loading .overlay {
     bottom: 0;
     z-index: 50;
     position: fixed;
-    animation: fade-in .5s both;
-    -webkit-animation: fade-in .5s both;
+    animation: fade-in .5s both ease-in-out;
+    -webkit-animation: fade-in .5s both ease-in-out;
     background: rgba(0, 0, 0, .5);
     display: block;
 }
@@ -409,19 +410,20 @@ body.loading .overlay.blur {
     backdrop-filter: brightness(150%) blur(30px);
 }
 
-body.completed .overlay {
+body.loading.completed .overlay {
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 50;
     position: fixed;
-    animation: fade-off .5s both;
-    -webkit-animation: fade-off .5s both;
+    animation: fade-off .5s ease-in-out both;
+    -webkit-animation: fade-off .5s ease-in-out both;
     background: rgba(0, 0, 0, .5);
+    /* opacity: 0; */
 }
 
-body.completed .overlay.blur {
+body.loading.completed .overlay.blur {
     -webkit-backdrop-filter: brightness(150%) blur(30px);
     backdrop-filter: brightness(150%) blur(30px);
 }
@@ -718,6 +720,15 @@ body.completed .overlay.blur {
     }
 }
 
+@keyframes local-and-right {
+    form {
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(.5em);
+    }
+}
+
 /* - 旋转 */
 
 @keyframes rotate {
@@ -777,6 +788,30 @@ body.completed .overlay.blur {
     }
     to {
         filter: none;
+    }
+}
+
+/* - 全局模糊 */
+
+@keyframes dropblur-in {
+    from {
+        backdrop-filter: brightness(0) blur(0);
+        opacity: .5;
+    }
+    to {
+        backdrop-filter: brightness(150%) blur(30px);
+        opacity: 1;
+    }
+}
+
+@keyframes dropblur-out {
+    from {
+        backdrop-filter: brightness(150%) blur(30px);
+        opacity: 1;
+    }
+    to {
+        backdrop-filter: brightness(0) blur(0);
+        opacity: .5;
     }
 }
 
@@ -894,4 +929,8 @@ container {
 
 #home #news a:not(.more):hover::before {
     opacity: 1;
+}
+
+#home .more:hover  i {
+    animation: local-and-right .5s infinite linear;
 }

@@ -1,11 +1,15 @@
 window.onload = function () {
-    document.body.classList.remove('loading');
+   
+    document.body.classList.add('completed');
+    setTimeout(() => {
+        document.body.removeAttribute('class')
+    }, 500);
     const btn = document.getElementById('changeTheme');
     btn.onclick = changeTheme;
 }
 
 function changeTheme() {
-    const doc = document.querySelector('html');
+    const doc = document.documentElement;
     const body = document.body;
     if (doc.classList.contains('white')) {
        body.classList.add('loading');
