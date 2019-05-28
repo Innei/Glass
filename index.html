@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh" class="font-auto">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
 <head>
     <meta charset="UTF-8">
@@ -20,15 +23,28 @@
         <div class="ball"></div>
         <div class="ball"></div>
     </div>
-   
+
     <header class="clearfix">
         <nav>
             <ul>
-                <li><a href="https://www.shizuri.net/" target="_blank"><i class="fas fa-home"></i></a></li>
-                <li><a href="https://shizuri.net/" target="_blank"><i class="far fa-sticky-note"></i></a></li>
-                <li><a href="./about.html"><i class="fa fa-fw fa-user"></i></a></li>
-                <li><a href="https://blog.shizuri.net/" target="_blank"><i class="fas fa-code"></i></a></li>
-                <li><a href="javascript:;" id="changeTheme"><i class="fas fa-sliders-h"></i></a></li>
+                <li><a href="https://www.shizuri.net/" target="_blank"><i class="fas fa-home"></i></a>
+                    <div class="content">主页</div>
+                </li>
+                <li><a href="https://shizuri.net/" target="_blank"><i class="far fa-sticky-note"></i></a>
+                    <div class="content">日志</div>
+                </li>
+                <li><a href="./about.html"><i class="fa fa-fw fa-user"></i></a>
+                    <div class="content">关于</div>
+                </li>
+                <li><a href="https://blog.shizuri.net/" target="_blank"><i class="fas fa-code"></i></a>
+                    <div class="content">博客</div>
+                </li>
+                <li><a href="javascript:;" id="changeTheme"><i class="fas fa-sliders-h"></i></a>
+                    <div class="content">切换</div>
+                </li>
+                <li><a href="javascript:;" id="changeFont"><i class="fas fa-font"></i></a>
+                    <div class="content">字体</div>
+                </li>
             </ul>
         </nav>
 
@@ -85,17 +101,17 @@
     <footer class="wrap">
         <p> © 2019 YINY.</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
     <script src="./src/index.js"></script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137916373-2"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137916373-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-	  gtag('config', 'UA-137916373-2');
-	</script>
-
+        gtag('config', 'UA-137916373-2');
+    </script>
 </body>
 
 </html>

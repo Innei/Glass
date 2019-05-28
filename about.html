@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh" class="font-auto">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
 <head>
     <meta charset="UTF-8">
@@ -24,11 +27,24 @@
     <header class="clearfix">
         <nav>
             <ul>
-                <li><a href="https://www.shizuri.net/" target="_blank"><i class="fas fa-home"></i></a></li>
-                <li><a href="https://shizuri.net/" target="_blank"><i class="far fa-sticky-note"></i></a></li>
-                <li><a href="./index.html"><i class="fa fa-fw fa-user"></i></a></li>
-                <li><a href="https://blog.shizuri.net/" target="_blank"><i class="fas fa-code"></i></a></li>
-                <li><a href="javascript:;" id="changeTheme"><i class="fas fa-sliders-h"></i></a></li>
+                <li><a href="https://www.shizuri.net/" target="_blank"><i class="fas fa-home"></i></a>
+                    <div class="content">主页</div>
+                </li>
+                <li><a href="https://shizuri.net/" target="_blank"><i class="far fa-sticky-note"></i></a>
+                    <div class="content">日志</div>
+                </li>
+                <li><a href="./index.html"><i class="fa fa-fw fa-user"></i></a>
+                    <div class="content">关于</div>
+                </li>
+                <li><a href="https://blog.shizuri.net/" target="_blank"><i class="fas fa-code"></i></a>
+                    <div class="content">博客</div>
+                </li>
+                <li><a href="javascript:;" id="changeTheme"><i class="fas fa-sliders-h"></i></a>
+                    <div class="content">切换</div>
+                </li>
+                <li><a href="javascript:;" id="changeFont"><i class="fas fa-font"></i></a>
+                    <div class="content">字体</div>
+                </li>
             </ul>
         </nav>
 
@@ -56,12 +72,13 @@
                 <p>建立此博客的初衷是记录不同内容于我另一个<a href="https://blog.shizuri.net" target="_blank">技术博客</a></p>
                 <p>这儿记录着生活的点滴，同时也会夹杂着一些想法、态度、状态...</p>
                 <h1>关于域名: </h1>
-                <p><a href="https://shizuri.net" target="_blank">shizuri.net</a> 于2019-02-20正式启用，作为此博客的新域名。shizuri在日语中是垂り，しずりゆき【垂り雪】，那也是一种美妙的景色啊。</p>
+                <p><a href="https://shizuri.net" target="_blank">shizuri.net</a>
+                    于2019-02-20正式启用，作为此博客的新域名。shizuri在日语中是垂り，しずりゆき【垂り雪】，那也是一种美妙的景色啊。</p>
                 <p>在这里我解释成，Shizukana Mori的缩写，shizuri。</p>
                 <blockquote>
                     <p>人生这么浮躁，不如静下心来去森林看看，也不错呢。</p>
                 </blockquote>
-               
+
                 <h1>标签: </h1>
                 <p>
                     <em>技术宅</em>
@@ -75,7 +92,8 @@
                 </p>
                 <h1>关于本站:</h1>
                 <p>
-                    这是我<del>初学</del>于2019-5-27 花了一个下午时间从只有一个导航栏的布局，到写了两个完整的网页，（当然他是静态的，原本是想写typecho主题，想到太麻烦了，就先写了两个页面。）来介绍自己，受到的灵感是<code>backdrop-filter</code>这个属性，不幸的他还没有兼容全部的浏览器，哪怕是Chrome也兼容不好。目前兼容最好的是Safari。另外Chrome需要打开最新的实验特征才能看到毛玻璃效果哦~
+                    这是我<del>初学</del>于2019-5-27
+                    花了一个下午时间从只有一个导航栏的布局，到写了两个完整的网页，（当然他是静态的，原本是想写typecho主题，想到太麻烦了，就先写了两个页面。）来介绍自己，受到的灵感是<code>backdrop-filter</code>这个属性，不幸的他还没有兼容全部的浏览器，哪怕是Chrome也兼容不好。目前兼容最好的是Safari。另外Chrome需要打开最新的实验特征才能看到毛玻璃效果哦~
 
                 </p>
                 <p>那，这就是我做的一次小小的尝试了~</p>
@@ -85,16 +103,17 @@
     <footer class="wrap">
         <p> © 2019 YINY.</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
     <script src="./src/index.js"></script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137916373-2"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137916373-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-	  gtag('config', 'UA-137916373-2');
-</script>
+        gtag('config', 'UA-137916373-2');
+    </script>
 
 </body>
 
