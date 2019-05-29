@@ -5,6 +5,19 @@ window.onload = function () {
     const font = document.getElementById('changeFont');
     theme.onclick = changeTheme;
     font.onclick = changeFont;
+
+    const close = document.querySelector('.notsupport');
+    if (window.getComputedStyle(close).getPropertyValue("display") === 'none') {
+        close.remove();
+    }
+    else {
+        close.onclick = e => {
+            e.target.style = 'animation: fade-off .5s both ease-in-out;'
+            setTimeout(() => {
+                e.target.remove()
+            }, 500);
+        }
+    }
 }
 
 function completed() {

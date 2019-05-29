@@ -31,7 +31,7 @@ body::before {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url(../img/57.png) center/cover fixed no-repeat;
+    background: url(https://i.loli.net/2019/05/29/5cee36e12a1c029809.png) center/cover fixed no-repeat;
     z-index: -3;
 }
 
@@ -115,6 +115,7 @@ header nav {
     right: 0;
     position: fixed;
     display: flex;
+    flex-wrap: nowrap;
     text-align: center;
     flex-direction: row;
     justify-content: center;
@@ -163,11 +164,14 @@ nav::before {
 }
 
 nav ul {
-    display: inline;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 1;
 }
 
 nav li {
     display: inline-block;
+    flex-shrink: 1;
 }
 
 header a {
@@ -945,6 +949,11 @@ footer {
     #home #news {
         columns: 1;
     }
+    header a {
+        color: currentColor;
+        padding: 1rem 1rem;
+        display: inline-block;
+    }
 }
 
 container {
@@ -1019,4 +1028,41 @@ nav a:hover+.content {
 
 .fas {
     position: relative;
+}
+
+.notice {
+    position: fixed;
+    display: none;
+}
+
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    .notice.notsupport {
+        display: block;
+        padding: 5rem;
+        border-radius: 24px;
+        background-color: #bdc3c7da;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-sizing: content-box;
+        height: 2rem;
+        max-width: 24rem;
+        margin: auto;
+        z-index: 55;
+        color: #34495e;
+        user-select: none;
+        pointer-events: none;
+        animation: fade-in .5s ease-in;
+    }
+    .notice::after {
+        content: '\f057';
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+        font-size: 24px;
+        font-family: "Font Awesome 5 Free";
+        pointer-events: auto;
+        cursor: pointer;
+    }
 }
