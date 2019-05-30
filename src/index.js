@@ -6,19 +6,21 @@ window.onload = function () {
     theme.onclick = changeTheme;
     font.onclick = changeFont;
 
-    const close = document.querySelector('.notsupport');
-    if (window.getComputedStyle(close).getPropertyValue("display") === 'none') {
-        close.remove();
-    }
-    else {
-        close.onclick = e => {
-            e.target.style = 'animation: fade-off .5s both ease-in-out;'
-            setTimeout(() => {
-                e.target.remove()
-            }, 500);
+    const more_btn = document.querySelector('#more-icon > i');
+
+
+    if (more_btn) {
+        // load_more(more_btn)
+        more_btn.onclick = load_more;
+        window.onscroll = () => {
+            let documentElement = document.documentElement;
+            if (documentElement.scrollTop + window.innerHeight == documentElement.scrollHeight) {
+                load_more();
+            }
         }
     }
-}
+
+};
 
 function completed() {
     document.body.classList.add('completed');
@@ -37,10 +39,9 @@ function changeTheme() {
             setTimeout(() => {
                 body.removeAttribute('class')
             }, 500);
-        }, 500)
+        }, 500);
         doc.classList.remove('white')
-    }
-    else {
+    } else {
         body.classList.add('loading');
         body.classList.add('loading');
         setTimeout(() => {
@@ -48,11 +49,27 @@ function changeTheme() {
             setTimeout(() => {
                 body.removeAttribute('class')
             }, 500);
-        }, 500)
+        }, 500);
         doc.classList.add('white')
     }
 }
+
+function close_notice() {
+    const close = document.querySelector('.notsupport');
+    if (window.getComputedStyle(close).getPropertyValue("display") === 'none') {
+        close.remove();
+    } else {
+        close.onclick = e => {
+            e.target.style = 'animation: fade-off .5s both ease-in-out;';
+            setTimeout(() => {
+                e.target.remove()
+            }, 500);
+        }
+    }
+}
+
 var f;
+
 function changeFont() {
     const head = document.head;
     const font = document.createElement('link');
@@ -65,25 +82,50 @@ function changeFont() {
     }
     if (!doc.classList.contains('font')) {
         doc.classList.add('font')
-    }
-    else {
+    } else {
         doc.classList.remove('font')
     }
 
 }
 
-// pjax 
+function load_more() {
+
+    const loading = document.getElementById('more-loading');
+    loading.style.display = 'block';
+    const xhr = new XMLHttpRequest();
+    xhr.open('get', './about.html');
+    let dom = document.createElement('div');
+    xhr.onreadystatechange = () => {
+        if (xhr.status === 200 && xhr.readyState === 4) {
+            document.querySelector('#more-icon').remove();
+            loading.remove();
+            const content = document.getElementById('more-content');
+            content.removeAttribute('style');
+            dom.innerHTML = xhr.responseText;
+
+            content.innerHTML = dom.querySelector("main").innerHTML;
+
+            dom = null;
+
+        }
+    };
+    xhr.send();
+}
+
+
+// pjax
 
 new Pjax({
     elements: "a:not([target])",
     selectors: [
         "title",
-        "main",
+        "container",
         'nav',
     ],
     cacheBust: false,
-})
+});
 document.addEventListener('pjax:send', () => {
     document.body.classList.add("loading")
-})
+});
 document.addEventListener('pjax:complete', window.onload);
+document.addEventListener('DOMContentLoaded', close_notice);

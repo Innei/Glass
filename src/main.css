@@ -136,16 +136,19 @@ nav::before {
     nav {
         color: rgba(236, 240, 241, .8);
     }
+
     nav::before {
         background: rgba(0, 0, 0, .5);
         -webkit-backdrop-filter: brightness(150%) blur(30px);
         backdrop-filter: brightness(150%) blur(30px);
     }
+
     html.white nav {
         color: #34495e;
     }
+
     html.white nav::before {
-        background: rgba(0, 0, 0, .05);
+        background: rgba(255, 255, 255, .7);
         -webkit-backdrop-filter: brightness(150%) blur(30px);
         backdrop-filter: brightness(150%) blur(30px);
     }
@@ -157,9 +160,10 @@ nav::before {
     nav {
         color: #333;
     }
+
     nav::before {
         background: #fff;
-        box-shadow: 0px 10px 30px rgba(0, 0, 0, .18), 0px 6px 10px rgba(0, 0, 0, .22);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .18), 0 6px 10px rgba(0, 0, 0, .22);
     }
 }
 
@@ -188,6 +192,7 @@ main {
     max-width: 55em;
     padding: 2em;
     animation: blur 1s ease-in-out;
+    z-index: 0;
 }
 
 main::before {
@@ -330,11 +335,11 @@ article {
     word-break: break-all
 }
 
-article>* {
+article > * {
     margin-bottom: 1em
 }
 
-article>*:last-child {
+article > *:last-child {
     margin-bottom: 0
 }
 
@@ -728,7 +733,7 @@ body.loading.completed .overlay.blur {
 }
 
 @keyframes local-and-right {
-    form {
+    from {
         transform: translateX(0px);
     }
     60% {
@@ -782,16 +787,6 @@ body.loading.completed .overlay.blur {
     }
 }
 
-/* - 波浪 */
-
-@keyframes waveMove {
-    from {
-        background-position: 0 100%;
-    }
-    to {
-        background-position: -20px 100%;
-    }
-}
 
 /* - 模糊 */
 
@@ -827,6 +822,18 @@ body.loading.completed .overlay.blur {
         opacity: .5;
     }
 }
+@keyframes down {
+    from {
+        top: -5px;
+    }
+    50%  {
+        top: 5px;
+    }
+    to {
+        top: -5px;
+    }
+}
+/*-- 持续动画*/
 
 /* - 仿win10小球加载 */
 
@@ -904,11 +911,24 @@ body.loading.completed .overlay.blur {
     }
 }
 
+
+/* - 波浪 */
+
+@keyframes waveMove {
+    from {
+        background-position: 0 100%;
+    }
+    to {
+        background-position: -20px 100%;
+    }
+}
+
+
 /* -- 底部 */
 
 footer {
     text-align: center;
-    margin-top: -3em;
+    /*margin-top: -5em;*/
 }
 
 /* -- 额外布局 用于首页 */
@@ -919,6 +939,7 @@ footer {
 
 #home .self {
     overflow: hidden;
+
 }
 
 #home section.self img {
@@ -927,8 +948,11 @@ footer {
     float: left;
     margin-left: 2em;
 }
-
-#home section.self>div {
+#home section.self img[src]{
+    max-width: 150px;
+    display: block;
+}
+#home section.self > div {
     margin-left: 15em;
 }
 
@@ -949,6 +973,7 @@ footer {
     #home #news {
         columns: 1;
     }
+
     header a {
         color: currentColor;
         padding: 1rem 1rem;
@@ -990,6 +1015,29 @@ container {
     animation: local-and-right .5s infinite ease-in-out;
 }
 
+
+/*-- 滚动显示更多*/
+
+#more-icon {
+    position: relative;
+    margin-top: -2em;
+    margin-bottom: 2em;
+}
+#more-icon  > i {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 44px;
+    animation: down 1s linear infinite both;
+    cursor: pointer;
+}
+#more-loading {
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 4rem;
+    margin: 0 auto 2rem auto;
+    /*margin-bottom: 2rem;*/
+}
 .content {
     position: absolute;
     border-radius: 18px;
@@ -1021,7 +1069,7 @@ html.white .content::before {
     background: rgba(0, 0, 0, .05);
 }
 
-nav a:hover+.content {
+nav a:hover + .content {
     visibility: visible;
     opacity: 1;
 }
@@ -1030,6 +1078,7 @@ nav a:hover+.content {
     position: relative;
 }
 
+/*-- 提示跳窗*/
 .notice {
     position: fixed;
     display: none;
@@ -1055,6 +1104,7 @@ nav a:hover+.content {
         pointer-events: none;
         animation: fade-in .5s ease-in;
     }
+
     .notice::after {
         content: '\f057';
         position: absolute;
