@@ -928,6 +928,7 @@ body.loading.completed .overlay.blur {
 
 footer {
     text-align: center;
+    margin-bottom: 2em;
     /*margin-top: -5em;*/
 }
 

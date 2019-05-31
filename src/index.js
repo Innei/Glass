@@ -10,12 +10,13 @@ window.onload = function () {
 
 
     if (more_btn) {
-        // load_more(more_btn)
+     
         more_btn.onclick = load_more;
         window.onscroll = () => {
             let documentElement = document.documentElement;
-            if (documentElement.scrollTop + window.innerHeight == documentElement.scrollHeight) {
-                load_more();
+            // 判断是否到底, chrome documentElement.scrollTop获取滚动高度  safari document.body.scrollTop获取 增加兼容性
+            if (documentElement.scrollTop || document.body.scrollTop + window.innerHeight == documentElement.scrollHeight || document.body.scrollTop) {
+                setTimeout(load_more, 1000)
             }
         }
     }
