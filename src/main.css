@@ -136,17 +136,14 @@ nav::before {
     nav {
         color: rgba(236, 240, 241, .8);
     }
-
     nav::before {
         background: rgba(0, 0, 0, .5);
         -webkit-backdrop-filter: brightness(150%) blur(30px);
         backdrop-filter: brightness(150%) blur(30px);
     }
-
     html.white nav {
         color: #34495e;
     }
-
     html.white nav::before {
         background: rgba(255, 255, 255, .7);
         -webkit-backdrop-filter: brightness(150%) blur(30px);
@@ -160,7 +157,6 @@ nav::before {
     nav {
         color: #333;
     }
-
     nav::before {
         background: #fff;
         box-shadow: 0 10px 30px rgba(0, 0, 0, .18), 0 6px 10px rgba(0, 0, 0, .22);
@@ -335,11 +331,11 @@ article {
     word-break: break-all
 }
 
-article > * {
+article>* {
     margin-bottom: 1em
 }
 
-article > *:last-child {
+article>*:last-child {
     margin-bottom: 0
 }
 
@@ -747,6 +743,24 @@ body.loading.completed .overlay.blur {
     }
 }
 
+@keyframes down-and-up {
+    from {
+        transform: translateY(20px)
+    }
+    to {
+        transform: translateY(-20px)
+    }
+}
+
+@-webkit-keyframes down-and-up {
+    from {
+        transform: translateY(20px)
+    }
+    to {
+        transform: translateY(-20px)
+    }
+}
+
 /* - 旋转 */
 
 @keyframes rotate {
@@ -787,7 +801,6 @@ body.loading.completed .overlay.blur {
     }
 }
 
-
 /* - 模糊 */
 
 @keyframes blur {
@@ -822,17 +835,19 @@ body.loading.completed .overlay.blur {
         opacity: .5;
     }
 }
+
 @keyframes down {
     from {
         top: -5px;
     }
-    50%  {
+    50% {
         top: 5px;
     }
     to {
         top: -5px;
     }
 }
+
 /*-- 持续动画*/
 
 /* - 仿win10小球加载 */
@@ -911,7 +926,6 @@ body.loading.completed .overlay.blur {
     }
 }
 
-
 /* - 波浪 */
 
 @keyframes waveMove {
@@ -922,7 +936,6 @@ body.loading.completed .overlay.blur {
         background-position: -20px 100%;
     }
 }
-
 
 /* -- 底部 */
 
@@ -940,7 +953,6 @@ footer {
 
 #home .self {
     overflow: hidden;
-
 }
 
 #home section.self img {
@@ -949,11 +961,13 @@ footer {
     float: left;
     margin-left: 2em;
 }
-#home section.self img[src]{
+
+#home section.self img[src] {
     max-width: 150px;
     display: block;
 }
-#home section.self > div {
+
+#home section.self>div {
     margin-left: 15em;
 }
 
@@ -974,7 +988,6 @@ footer {
     #home #news {
         columns: 1;
     }
-
     header a {
         color: currentColor;
         padding: 1rem 1rem;
@@ -1016,7 +1029,6 @@ container {
     animation: local-and-right .5s infinite ease-in-out;
 }
 
-
 /*-- 滚动显示更多*/
 
 #more-icon {
@@ -1024,13 +1036,15 @@ container {
     margin-top: -2em;
     margin-bottom: 2em;
 }
-#more-icon  > i {
+
+#more-icon>i {
     left: 50%;
     transform: translateX(-50%);
     font-size: 44px;
     animation: down 1s linear infinite both;
     cursor: pointer;
 }
+
 #more-loading {
     position: relative;
     left: 0;
@@ -1039,6 +1053,7 @@ container {
     margin: 0 auto 2rem auto;
     /*margin-bottom: 2rem;*/
 }
+
 .content {
     position: absolute;
     border-radius: 18px;
@@ -1070,7 +1085,7 @@ html.white .content::before {
     background: rgba(0, 0, 0, .05);
 }
 
-nav a:hover + .content {
+nav a:hover+.content {
     visibility: visible;
     opacity: 1;
 }
@@ -1080,9 +1095,11 @@ nav a:hover + .content {
 }
 
 /*-- 提示跳窗*/
+
 .notice {
     position: fixed;
     display: none;
+    z-index: 55;
 }
 
 @supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
@@ -1090,7 +1107,7 @@ nav a:hover + .content {
         display: block;
         padding: 5rem;
         border-radius: 24px;
-        background-color: #bdc3c7da;
+        background-color: #87c5eeda;
         top: 0;
         left: 0;
         right: 0;
@@ -1099,13 +1116,11 @@ nav a:hover + .content {
         height: 2rem;
         max-width: 24rem;
         margin: auto;
-        z-index: 55;
         color: #34495e;
         user-select: none;
         pointer-events: none;
         animation: fade-in .5s ease-in;
     }
-
     .notice::after {
         content: '\f057';
         position: absolute;

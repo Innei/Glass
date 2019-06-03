@@ -6,22 +6,23 @@ window.onload = function () {
     theme.onclick = changeTheme;
     font.onclick = changeFont;
 
-    const more_btn = document.querySelector('#more-icon > i');
+    Blind_btn();
 
+};
 
+function Blind_btn() {
+    let more_btn = document.querySelector('#more-icon > i');
     if (more_btn) {
-     
         more_btn.onclick = load_more;
         window.onscroll = () => {
             let documentElement = document.documentElement;
             // 判断是否到底, chrome documentElement.scrollTop获取滚动高度  safari document.body.scrollTop获取 增加兼容性
-            if (documentElement.scrollTop || document.body.scrollTop + window.innerHeight == documentElement.scrollHeight || document.body.scrollTop) {
-                setTimeout(load_more, 1000)
+            if (((documentElement.scrollTop || document.body.scrollTop) + window.innerHeight || documentElement.clientHeight ) == (documentElement.scrollHeight || document.body.scrollTop)) {
+                setTimeout(load_more, 1000);
             }
-        }
+        };
     }
-
-};
+}
 
 function completed() {
     document.body.classList.add('completed');
@@ -61,7 +62,7 @@ function close_notice() {
         close.remove();
     } else {
         close.onclick = e => {
-            e.target.style = 'animation: fade-off .5s both ease-in-out;';
+            e.target.style = 'animation: fade-off 1.5s both ease-in-out 1s;';
             setTimeout(() => {
                 e.target.remove()
             }, 500);
@@ -100,14 +101,12 @@ function load_more() {
         if (xhr.status === 200 && xhr.readyState === 4) {
             document.querySelector('#more-icon').remove();
             loading.remove();
-            const content = document.getElementById('more-content');
+            const content = [...document.getElementsByClassName('more-content')][0];
             content.removeAttribute('style');
             dom.innerHTML = xhr.responseText;
-
             content.innerHTML = dom.querySelector("main").innerHTML;
 
             dom = null;
-
         }
     };
     xhr.send();
